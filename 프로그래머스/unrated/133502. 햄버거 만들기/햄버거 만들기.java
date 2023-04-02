@@ -1,41 +1,18 @@
-import java.util.*;
-
 class Solution {
     public int solution(int[] ingredient) {
+        int[] stack = new int[ingredient.length];
+        int sp = 0;
         int answer = 0;
-        System.out.println();
-        ArrayList<Integer> burger = new ArrayList<>();
-        for(int i=0; i< ingredient.length; i++){
-            burger.add(ingredient[i]);
+        for (int i : ingredient) {
+            stack[sp++] = i;
+            if (sp >= 4 && stack[sp - 1] == 1
+                && stack[sp - 2] == 3
+                && stack[sp - 3] == 2
+                && stack[sp - 4] == 1) {
+                sp -= 4;
+                answer++;
+            }
         }
-        int index = 0;
-
-        while(burger.size() - index >=4){
-
-            if(burger.get(index) != 1) {
-                index++;
-                continue;
-            }
-            if(burger.get(index + 1) != 2) {
-                index++;
-                continue;
-            }
-            if(burger.get(index + 2) != 3) {
-                index++;
-                continue;
-            }
-            if(burger.get(index + 3) != 1) {
-                index++;
-                continue;
-            }
-            answer++;
-           
-            for(int i=0; i<4; i++){
-                burger.remove(index);
-            }
-            index -= index < 3 ? index : 3;
-        }
-
-        return  answer;
+        return answer;
     }
 }
