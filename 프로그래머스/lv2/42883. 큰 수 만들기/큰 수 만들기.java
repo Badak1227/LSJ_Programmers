@@ -1,33 +1,23 @@
+import java.util.*;
+
 class Solution {
     public String solution(String number, int k) {
         String answer = "";
 
-        int index = 0;
-        while(index < number.length()){
-            while(k>0){
-                try{
-                    if(answer.charAt(answer.length()-1) < number.charAt(index)){
-                        answer = answer.substring(0, answer.length()-1);
-                        k--;
-                    }
-                    else {
-                        answer += number.charAt(index);
-                        break;
-                    }
-                }
-                catch (StringIndexOutOfBoundsException e){
-                    answer += number.charAt(index);
-                    break;
-                }
+        Stack<Character> nums = new Stack<>();
+        int i = 0;
+        while(i < number.length()){
+            char tmp = number.charAt(i);
+            while(k>0 && !nums.empty() && nums.peek() < tmp){
+                nums.pop();
+                k--;
             }
-            if(k==0){
-                answer += number.substring(index);
-                break;
-            }
-            index++;
+            nums.push(tmp);
+            i++;
         }
-        if(k>0){
-            answer = answer.substring(0, index - k);
+
+        for(int j=0; j<nums.size() - k; j++){
+            answer += nums.get(j);
         }
         return answer;
     }
