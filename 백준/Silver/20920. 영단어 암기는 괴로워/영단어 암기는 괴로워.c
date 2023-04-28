@@ -129,7 +129,7 @@ void merge_len(int start, int mid, int end) {
     int l = start, r = mid + 1;
 
     char** tmps = (char**)malloc(sizeof(char*) * (end - start + 1));
-    int* tmpf = (int*)malloc(sizeof(int*) * (end - start + 1));
+    int* tmpf = (int*)malloc(sizeof(int) * (end - start + 1));
     int idx = 0;
 
     while (l <= mid && r <= end) {
@@ -176,7 +176,7 @@ void merge_freq(int start, int mid, int end) {
     int l = start, r = mid + 1;
 
     char** tmps = (char**)malloc(sizeof(char*) * (end - start + 1));
-    int* tmpf = (int*)malloc(sizeof(int*) * (end - start + 1));
+    int* tmpf = (int*)malloc(sizeof(int) * (end - start + 1));
     int idx = 0;
 
     while (l <= mid && r <= end) {
