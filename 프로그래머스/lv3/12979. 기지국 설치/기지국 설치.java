@@ -3,6 +3,7 @@ class Solution {
         int answer = 0;
         int stationIdx = 0;
         int position = 1;
+        int wide = 2*w+1;
         
         while(position <= n){        
             // 기지국이 설치 되어 있는 경우
@@ -12,7 +13,7 @@ class Solution {
             // 기지국이 설치 되어 있지 않은 경우 
             }else{            
                 answer++;
-                position += 2*w+1;
+                position += wide;
             }            
         }
         
